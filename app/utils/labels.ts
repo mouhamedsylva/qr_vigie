@@ -64,6 +64,7 @@ const ACTIONS: Record<string, string> = {
   'restaurant.update_tax': 'Taxes modifiées',
   'restaurant.set_opening_hours': 'Horaires modifiés',
   'menu.price_change': 'Prix modifié',
+  'menu.item_bulk': 'Action groupée sur des articles',
   'payments.refund': 'Remboursement',
   'payments.cash_collected': 'Encaissement espèces',
   'payments.amount_mismatch': 'Écart de montant au paiement',
