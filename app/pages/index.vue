@@ -28,6 +28,7 @@ const in7days = now + 7 * 864e5;
 const attention = computed(() => {
   const list = recent.value?.data ?? [];
   return {
+    planRequest: list.filter((r) => !!r.owner.subscription?.requestedPlan),
     pastDue: list.filter((r) => r.owner.subscription?.status === 'PAST_DUE'),
     trialEnding: list.filter((r) => {
       const s = r.owner.subscription;
@@ -106,6 +107,7 @@ const hello = new Date().getHours() < 18 ? 'Bonjour' : 'Bonsoir';
             <div class="grid gap-3 sm:grid-cols-2">
               <NuxtLink
                 v-for="w in [
+                  { key: 'planRequest', label: 'Souscriptions à vérifier (règlement)', icon: 'i-lucide-badge-check', color: 'text-primary bg-primary/10', list: attention.planRequest },
                   { key: 'pastDue', label: 'Abonnements impayés', icon: 'i-lucide-credit-card', color: 'text-warning bg-warning/10', list: attention.pastDue },
                   { key: 'trialEnding', label: 'Essais finissant sous 7 jours', icon: 'i-lucide-hourglass', color: 'text-info bg-info/10', list: attention.trialEnding },
                   { key: 'suspended', label: 'Suspendus ou bannis', icon: 'i-lucide-ban', color: 'text-error bg-error/10', list: attention.suspended },

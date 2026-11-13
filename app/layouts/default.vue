@@ -10,6 +10,7 @@ const links: NavigationMenuItem[] = [
   { label: 'Restaurants', icon: 'i-lucide-store', to: '/restaurants' },
   { label: 'Forfaits', icon: 'i-lucide-layers', to: '/plans' },
   { label: 'Journal d\'audit', icon: 'i-lucide-scroll-text', to: '/audit' },
+  { label: 'Réglages', icon: 'i-lucide-settings', to: '/settings' },
 ].map((l) => ({ ...l, onSelect: () => (open.value = false) }));
 
 const userMenu = computed<DropdownMenuItem[][]>(() => [

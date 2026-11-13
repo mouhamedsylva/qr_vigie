@@ -45,10 +45,14 @@ const DOMAINS: Record<string, { label: string; icon: string }> = {
   reviews: { label: 'Avis', icon: 'i-lucide-star' },
   privacy: { label: 'Données personnelles', icon: 'i-lucide-lock' },
   integrations: { label: 'Intégrations', icon: 'i-lucide-plug' },
+  billing: { label: 'Abonnement', icon: 'i-lucide-credit-card' },
 };
 
 const ACTIONS: Record<string, string> = {
   'admin.restaurant_status': 'Statut d\'un restaurant modifié',
+  'admin.restaurant_delete': 'Restaurant supprimé (administration)',
+  'admin.trial_settings': 'Période d\'essai modifiée',
+  'billing.plan_subscribe': 'Forfait souscrit par le propriétaire',
   'admin.user_status': 'Statut d\'un compte modifié',
   'admin.subscription_update': 'Abonnement modifié',
   'admin.plan_create': 'Forfait créé',

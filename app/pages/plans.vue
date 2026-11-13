@@ -32,6 +32,7 @@ const ALL_FEATURES = Object.keys(FEATURES);
         </template>
         <template #right>
           <USwitch v-if="inactiveCount" v-model="showInactive" size="sm" :label="`Afficher les inactifs (${inactiveCount})`" class="hidden sm:flex" />
+          <UButton to="/settings" color="neutral" variant="ghost" icon="i-lucide-calendar-clock" label="Période d’essai" class="hidden sm:inline-flex" />
           <UButton icon="i-lucide-plus" label="Forfait" @click="open(null)" />
         </template>
       </UDashboardNavbar>
@@ -55,7 +56,7 @@ const ALL_FEATURES = Object.keys(FEATURES);
               <p class="font-display text-2xl font-semibold text-highlighted">{{ p.name }}</p>
             </div>
             <UBadge v-if="!p.isActive" color="neutral" variant="outline" label="Inactif" />
-            <UBadge v-else-if="p.trialDays" color="info" variant="subtle" :label="`Essai ${p.trialDays} j`" />
+            <UBadge v-else-if="p.code === 'PRO'" color="info" variant="subtle" icon="i-lucide-gift" label="Offert en essai" />
           </div>
 
           <p class="mt-4">

@@ -23,6 +23,7 @@ const state = reactive({
   name: editing?.name ?? '',
   priceMonthly: fromMinorUnits(editing?.priceMonthly ?? 0, currency),
   priceYearly: fromMinorUnits(editing?.priceYearly ?? 0, currency),
+  // Conservé tel quel : la durée de l'essai se règle globalement dans Réglages.
   trialDays: editing?.trialDays ?? 14,
   quotas: Object.fromEntries(QUOTAS.map((q) => [q.key, editing ? editing[q.key] : 1])) as Record<Quota, number | null>,
   features: [...(editing?.features ?? [])],
@@ -89,9 +90,6 @@ async function submit() {
           </UFormField>
           <UFormField label="Prix annuel" :hint="yearlySaving !== null ? `${yearlySaving > 0 ? '−' : '+'}${Math.abs(yearlySaving)} % vs mensuel` : undefined">
             <UInputNumber v-model="state.priceYearly" :min="0" :step="10000" class="w-full" :format-options="moneyFormat" />
-          </UFormField>
-          <UFormField label="Durée d'essai" hint="jours">
-            <UInputNumber v-model="state.trialDays" :min="0" :max="365" class="w-full" />
           </UFormField>
         </div>
 

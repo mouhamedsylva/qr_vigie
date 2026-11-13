@@ -42,6 +42,10 @@ export interface AdminRestaurant {
       trialEndsAt: string | null;
       currentPeriodEnd: string | null;
       plan: { code: string };
+      /** Forfait choisi par le propriétaire après l'essai, en attente d'activation. */
+      requestedPlan: { code: string; name: string } | null;
+      requestedCycle: 'MONTHLY' | 'YEARLY' | null;
+      requestedAt: string | null;
     } | null;
   };
   /** Commandes des 30 derniers jours, tables et membres actifs. */
@@ -58,6 +62,14 @@ export interface PlatformAnalytics {
   /** Revenu mensuel récurrent par devise. */
   mrr: Record<string, number>;
   churnRate: number;
+}
+
+/** Réglages de la période d'essai (Vigie → Réglages). */
+export interface TrialSettings {
+  trialDays: number;
+  trialReminderDays: number;
+  updatedAt: string;
+  updatedById: string | null;
 }
 
 export interface Plan {
